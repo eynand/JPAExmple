@@ -5,8 +5,6 @@
     <persistence-unit name="mysql" transaction-type="RESOURCE_LOCAL">
         <!-- Persistence provider -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <!-- Entity classes -->
-        <class>main.java.model.Person</class>
         <properties>
             <!-- The JDBC driver of your database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
@@ -20,7 +18,7 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="ogm-mongodb" transaction-type="JTA">
+    <persistence-unit name="ogm-mongodb" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="MONGODB" />
