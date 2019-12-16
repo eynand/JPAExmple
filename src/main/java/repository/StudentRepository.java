@@ -5,6 +5,7 @@ import main.java.model.Student;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.io.Closeable;
+import java.util.List;
 
 public class StudentRepository implements Closeable {
 
@@ -33,9 +34,16 @@ public class StudentRepository implements Closeable {
         manager.getTransaction().commit();
     }
 
+    public List<Student> getAllStudents() {
+        return manager.createNamedQuery("getAllStudents").getResultList();
+    }
+
+    public Student getStudentById(String studentId) {
+        return (Student) manager.createNamedQuery("getStudentById").setParameter("studentId",studentId).getSingleResult();
+    }
+
     @Override
     public void close() {
         manager.close();
-        entityManagersFactory.close();
     }
 }

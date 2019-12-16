@@ -41,6 +41,5 @@ public class CourseRepository implements Closeable {
     @Override
     public void close() {
         manager.close();
-        entityManagersFactory.close();
     }
 }

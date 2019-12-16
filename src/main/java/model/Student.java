@@ -8,6 +8,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "students")
+@NamedQuery(name = "getAllStudents",query = "SELECT s FROM Student s")
+@NamedQuery(name = "getStudentById",query = "select s from Student s where s.studentId = :studentId")
 public class Student extends Person implements Serializable {
 
     @Column

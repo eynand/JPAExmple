@@ -5,6 +5,7 @@ import main.java.model.Student;
 import main.java.repository.StudentRepository;
 
 import javax.persistence.EntityManagerFactory;
+import java.util.List;
 
 public class StudentService {
 
@@ -30,10 +31,19 @@ public class StudentService {
         return student;
     }
 
-    public void associateStudentToCourse(Student student, Course course) {
+    public void associateStudentToCourse(CourseService courseService,Student student, Course course) {
         student.getCourses().add(course);
         course.getStudents().add(student);
         repository.merge(student);
+        courseService.merge(course);
+    }
+
+    public List<Student> getAllStudents(){
+        return repository.getAllStudents();
+    }
+
+    public Student getStudentById(String studentId) {
+        return repository.getStudentById(studentId);
     }
 
     public void close() {
