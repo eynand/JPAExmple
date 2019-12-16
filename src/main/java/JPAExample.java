@@ -1,4 +1,4 @@
-package main;
+package main.java;
 
 import main.java.model.Course;
 import main.java.model.Student;
